@@ -1,33 +1,14 @@
-import os
-from flask import Flask, render_template, session, redirect, url_for, flash
-from flask_bootstrap import Bootstrap
-from flask_moment import Moment
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField
-from wtforms.validators import DataRequired, Email
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-import requests
-from dotenv import load_dotenv
+from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
-
-load_dotenv()
-
-MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN')
-MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
-MAILGUN_RECIPIENTS = os.getenv('MAILGUN_RECIPIENTS')
-
-basedir = os.path.abspath(os.path.dirname(__file__))
+import pytz
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') or 'a_difficult_and_secure_key_2025'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-bootstrap = Bootstrap(app)
-moment = Moment(app)
+# Configuração do banco de dados
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///alunos.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 # Modelo de dados para Alunos
 class Aluno(db.Model):
@@ -40,8 +21,8 @@ def index():
     brasilia_tz = pytz.timezone('America/Sao_Paulo')
     data_hora_brasilia = datetime.now(brasilia_tz).strftime('%d/%m/%Y %H:%M')
     dados = {
-        'nome': 'Mariana Oliveira Ferreira',
-        'prontuario': 'PT3019497',
+        'nome': 'Luis de Moura Neto',
+        'prontuario': 'PT3019861',
         'data_hora': data_hora_brasilia,
     }
     return render_template('index.html', dados=dados)
