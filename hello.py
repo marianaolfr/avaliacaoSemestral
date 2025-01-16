@@ -21,8 +21,8 @@ def index():
     brasilia_tz = pytz.timezone('America/Sao_Paulo')
     data_hora_brasilia = datetime.now(brasilia_tz).strftime('%d/%m/%Y %H:%M')
     dados = {
-        'nome': 'Mariana Oliveira Ferreira',
-        'prontuario': 'PT3019497',
+        'nome': 'Luis de Moura Neto',
+        'prontuario': 'PT3019861',
         'data_hora': data_hora_brasilia,
     }
     return render_template('index.html', dados=dados)
