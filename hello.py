@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_bootstrap import Bootstrap
 from datetime import datetime
 import pytz
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+Bootstrap(app)  # Inicializar Flask-Bootstrap
 
 # Configuração do banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///alunos.db'
@@ -19,7 +21,7 @@ class Aluno(db.Model):
 @app.route('/')
 def index():
     brasilia_tz = pytz.timezone('America/Sao_Paulo')
-    data_hora_brasilia = datetime.now(brasilia_tz).strftime('%d/%m/%Y %H:%M')
+    data_hora_brasilia = datetime.now(brasilia_tz).strftime('%B %d, %Y %I:%M %p')
     dados = {
         'nome': 'Mariana Oliveira Ferreira',
         'prontuario': 'PT3019497',
