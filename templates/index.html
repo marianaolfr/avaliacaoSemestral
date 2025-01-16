@@ -19,34 +19,15 @@
                         <a class="nav-link" href="/cadastro_professores">Cadastro de Professores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/cadastro_disciplinas">Cadastro de Disciplinas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cadastro_alunos">Cadastro de Alunos</a>
+                        <div class="container mt-5"> <h1 class="text-center">Informações da Avaliação Semestral</h1>
+                            <p>Nome: {{ dados.nome }}</p>
+                            <p>Prontuário: {{ dados.prontuario }}</p>
+                            <p>Data e Hora: {{ dados.data_hora }}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="container mt-5">
-        <h1 class="text-center">Informações da Avaliação Semestral</h1>
-        <table class="table table-bordered mt-4">
-            <tbody>
-                <tr>
-                    <th>Nome</th>
-                    <td>{{ dados.nome }}</td>
-                </tr>
-                <tr>
-                    <th>Prontuário</th>
-                    <td>{{ dados.prontuario }}</td>
-                </tr>
-                <tr>
-                    <th>Data e Hora</th>
-                    <td>{{ dados.data_hora }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </body>
 </html>
