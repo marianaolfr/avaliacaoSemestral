@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliação Semestral</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Avaliação Semestral</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">Avaliação semestral</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% extends "bootstrap/base.html" %}
 
-  <div class="container mt-5">
-    <h1 class="text-center">Informações da Avaliação Semestral</h1>
-    <p>Nome: {{ dados.nome }}</p>
-    <p>Prontuário: {{ dados.prontuario }}</p>
-    <p>Data e Hora: {{ dados.data_hora }}</p>
+{% block title %}Avaliação Semestral{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Avaliação Semestral</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Avaliação semestral</a>
+        </li>
+      </ul>
+    </div>
   </div>
-</body>
-</html>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center">Informações da Avaliação Semestral</h1>
+  <p>Nome: {{ dados.nome }}</p>
+  <p>Prontuário: {{ dados.prontuario }}</p>
+  <p>Data e Hora: {{ dados.data_hora }}</p>
+</div>
+{% endblock %}
