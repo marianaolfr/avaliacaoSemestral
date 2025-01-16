@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Avaliação Semestral</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Avaliação semestral</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro_professores">Cadastro de Professores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro_disciplinas">Cadastro de Disciplinas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cadastro_alunos">Cadastro de Alunos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Cadastre o novo Aluno:</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="nome" placeholder="Nome do Aluno" required>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" name="disciplina">
+                    <option value="DSWA5">DSWA5</option>
+                    <option value="GPSA5">GPSA5</option>
+                    <option value="IHCA5">IHCA5</option>
+                    <option value="SODA5">SODA5</option>
+                    <option value="PJIA5">PJIA5</option>
+                    <option value="TCOA5">TCOA5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+
+        <h3 class="mt-5">Relação de alunos cadastrados</h3>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Disciplina</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.disciplina }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
